@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Aze Links</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    :root {
+      --bg: #ffffff;
+      --text: #111111;
+      --subtext: #666666;
+    }
+
+    html, body {
+      width: 100%;
+      min-height: 100%;
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "PingFang TC", "Microsoft JhengHei", sans-serif;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+    }
+
+    .page {
+      width: 100%;
+      min-height: 100vh;
+      padding: 28px 16px 40px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 460px;
+    }
+
+    .profile {
+      text-align: center;
+      margin-bottom: 26px;
+    }
+
+    .avatar-wrap {
+      position: relative;
+      width: 122px;
+      height: 122px;
+      margin: 0 auto 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .avatar-glow {
+      position: absolute;
+      inset: -10px;
+      border-radius: 50%;
+      background: radial-gradient(
+        circle,
+        rgba(255, 153, 51, 0.34) 0%,
+        rgba(255, 153, 51, 0.22) 22%,
+        rgba(255, 153, 51, 0.13) 42%,
+        rgba(255, 153, 51, 0.07) 60%,
+        rgba(255, 153, 51, 0.03) 74%,
+        rgba(255, 153, 51, 0) 86%
+      );
+      filter: blur(12px);
+      animation: avatarGlow 2.6s ease-in-out infinite;
+      pointer-events: none;
+    }
+
+    .avatar {
+      position: relative;
+      z-index: 2;
+      width: 96px;
+      height: 96px;
+      border-radius: 50%;
+      object-fit: cover;
+      display: block;
+      border: 3px solid #fff;
+      background: #f5f5f5;
+      box-shadow:
+        0 10px 24px rgba(0, 0, 0, 0.08),
+        0 0 0 4px rgba(255, 255, 255, 0.85);
+    }
+
+    @keyframes avatarGlow {
+      0%, 100% {
+        transform: scale(0.96);
+        opacity: 0.78;
+      }
+      50% {
+        transform: scale(1.06);
+        opacity: 1;
+      }
+    }
+
+    .name {
+      font-size: 26px;
+      font-weight: 800;
+      color: #111;
+      margin-bottom: 8px;
+    }
+
+    .bio {
+      font-size: 14px;
+      line-height: 1.8;
+      color: var(--subtext);
+      max-width: 360px;
+      margin: 0 auto;
+    }
+
+    .links {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-top: 26px;
+    }
+
+    .link-item {
+      --c: #333;
+      --bg1: #f8f8f8;
+      --bg2: #ffffff;
+      --bd: #ececec;
+
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      width: 100%;
+      min-height: 62px;
+      padding: 14px 18px;
+      border-radius: 18px;
+      text-decoration: none;
+      color: var(--text);
+      background: linear-gradient(135deg, var(--bg1), var(--bg2));
+      border: 1.5px solid var(--bd);
+      box-shadow: 0 8px 22px rgba(0, 0, 0, 0.04);
+      transition: 0.2s ease;
+    }
+
+    .link-item:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 12px 26px rgba(0, 0, 0, 0.08);
+    }
+
+    .link-item:active {
+      transform: scale(0.98);
+      filter: brightness(0.97);
+    }
+
+    .icon-box {
+      flex: 0 0 44px;
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: transparent;
+      box-shadow: none;
+      overflow: visible;
+    }
+
+    .icon-box img {
+      width: 34px;
+      height: 34px;
+      object-fit: contain;
+      display: block;
+    }
+
+    .link-text {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      text-align: left;
+    }
+
+    .link-title {
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    .link-desc {
+      margin-top: 4px;
+      font-size: 12px;
+      color: #7a7a7a;
+      line-height: 1.4;
+    }
+
+    .arrow {
+      flex: 0 0 auto;
+      font-size: 20px;
+      color: var(--c);
+      font-weight: 700;
+    }
+
+    .line {
+      --c: #06c755;
+      --bg1: #effdf4;
+      --bg2: #ffffff;
+      --bd: #c8f2d7;
+    }
+
+    .instagram {
+      --c: #e1306c;
+      --bg1: #fff1f7;
+      --bg2: #fff7f3;
+      --bd: #ffd3e3;
+    }
+
+    .facebook {
+      --c: #1877f2;
+      --bg1: #eef5ff;
+      --bg2: #ffffff;
+      --bd: #cfe1ff;
+    }
+
+    .youtube {
+      --c: #ff5a36;
+      --bg1: #fff1ed;
+      --bg2: #fffaf8;
+      --bd: #ffcbbb;
+    }
+
+    .tiktok {
+      --c: #111111;
+      --bg1: #f3f8fc;
+      --bg2: #ffffff;
+      --bd: #d8e7f2;
+    }
+
+    .gmail {
+      --c: #ff8a3d;
+      --bg1: #fff7ed;
+      --bg2: #fffdf9;
+      --bd: #ffd9bc;
+    }
+
+    .footer {
+      text-align: center;
+      font-size: 12px;
+      color: #999;
+      margin-top: 22px;
+      padding-bottom: 8px;
+    }
+
+    @media (max-width: 480px) {
+      .page {
+        padding: 22px 14px 32px;
+      }
+
+      .avatar-wrap {
+        width: 112px;
+        height: 112px;
+      }
+
+      .avatar-glow {
+        inset: -8px;
+        filter: blur(10px);
+      }
+
+      .avatar {
+        width: 88px;
+        height: 88px;
+      }
+
+      .name {
+        font-size: 22px;
+      }
+
+      .bio {
+        font-size: 13px;
+      }
+
+      .link-item {
+        min-height: 58px;
+        padding: 12px 14px;
+        gap: 14px;
+        border-radius: 16px;
+      }
+
+      .icon-box {
+        width: 40px;
+        height: 40px;
+        flex-basis: 40px;
+      }
+
+      .icon-box img {
+        width: 30px;
+        height: 30px;
+      }
+
+      .link-title {
+        font-size: 15px;
+      }
+
+      .link-desc {
+        font-size: 11px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="container">
+
+      <div class="profile">
+        <div class="avatar-wrap">
+          <span class="avatar-glow"></span>
+          <img class="avatar" src="aze.jpg" alt="Aze 头像" />
+        </div>
+        <div class="name">阿澤古法健身</div>
+        <div class="bio">
+          歡迎聯絡我，查看我的社群平台與聯繫方式<br>
+          古法·健康·运动
+        </div>
+      </div>
+
+      <div class="links">
+
+        <a class="link-item line" href="https://line.me/ti/p/~your_line_id" target="_blank" rel="noopener noreferrer">
+          <div class="icon-box">
+            <img src="line.png" alt="LINE">
+          </div>
+          <div class="link-text">
+            <div class="link-title">LINE</div>
+            <div class="link-desc">一對一私訊聯絡</div>
+          </div>
+          <div class="arrow">›</div>
+        </a>
+
+        <a class="link-item instagram" href="https://www.instagram.com/llama.6952532/" target="_blank" rel="noopener noreferrer">
+          <div class="icon-box">
+            <img src="instagram.png" alt="Instagram">
+          </div>
+          <div class="link-text">
+            <div class="link-title">Instagram</div>
+            <div class="link-desc">追蹤最新內容</div>
+          </div>
+          <div class="arrow">›</div>
+        </a>
+
+        <a class="link-item facebook" href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer">
+          <div class="icon-box">
+            <img src="facebook.png" alt="Facebook">
+          </div>
+          <div class="link-text">
+            <div class="link-title">Facebook</div>
+            <div class="link-desc">查看更多資訊</div>
+          </div>
+          <div class="arrow">›</div>
+        </a>
+
+        <a class="link-item youtube" href="https://www.youtube.com/@aze1122-tw" target="_blank" rel="noopener noreferrer">
+          <div class="icon-box">
+            <img src="youtube.png" alt="YouTube">
+          </div>
+          <div class="link-text">
+            <div class="link-title">YouTube</div>
+            <div class="link-desc">觀看影片內容</div>
+          </div>
+          <div class="arrow">›</div>
+        </a>
+
+        <a class="link-item tiktok" href="https://www.tiktok.com/" target="_blank" rel="noopener noreferrer">
+          <div class="icon-box">
+            <img src="tiktok.png" alt="TikTok">
+          </div>
+          <div class="link-text">
+            <div class="link-title">TikTok</div>
+            <div class="link-desc">短影片與精華內容</div>
+          </div>
+          <div class="arrow">›</div>
+        </a>
+
+        <a class="link-item gmail" href="mailto:yourgmail@gmail.com">
+          <div class="icon-box">
+            <img src="gmail.png" alt="Gmail">
+          </div>
+          <div class="link-text">
+            <div class="link-title">Gmail</div>
+            <div class="link-desc">Email 聯絡我</div>
+          </div>
+          <div class="arrow">›</div>
+        </a>
+
+      </div>
+
+      <div class="footer">© 2026 Aze</div>
+    </div>
+  </div>
+</body>
+</html>
